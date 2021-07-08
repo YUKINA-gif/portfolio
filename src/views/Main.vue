@@ -1,5 +1,6 @@
 <template>
   <div class="main">
+    <!-- メインイメージ -->
     <h1 class="main_title">Yukina Nakanishi's</h1>
     <h1 class="main_title" id="main_title2">Portfolio</h1>
     <img
@@ -7,6 +8,7 @@
       alt="メイン画像"
       class="image"
     />
+    <!-- About me -->
     <div class="flex contents">
       <div id="aboutme">
         <h2 class="title">About me</h2>
@@ -15,20 +17,44 @@
             <div class="image_back"></div>
           </div>
           <div class="aboutme_text">
-              <p>中西 由季奈</p>
-              <p>1993年生まれ。</p>
-              <p>ECサイト運営の受注としてお客様対応する中でサイトについてのエラーや問い合わせを答えられないことにもどかしく感じ、プログラミングの勉強をはじめる。それがとても楽しく、自分にはモノづくりがあっていることに気付き、1月下旬から本格的に勉強を開始。</p>
+            <p>中西 由季奈</p>
+            <p>1993年生まれ。</p>
+            <p>
+              ECサイト運営の受注としてお客様対応する中でサイトについてのエラーや問い合わせを答えられないことにもどかしく感じ、プログラミングの勉強をはじめる。それがとても楽しく、自分にはモノづくりがあっていることに気付き、1月下旬から本格的に勉強を開始。
+            </p>
           </div>
         </div>
+        <div>
+          <!-- Portfolio -->
+          <h2 class="title ptf_title" id="portfolio">Portfolio</h2>
+          <carousel :per-page="2" :autoplay="autoplay" :loop="loop">
+            <slide v-for="portfolio in portfolios" :key="portfolio.id">
+              <div class="ptf_item" @click="openModal(portfolio)">
+                <img
+                  :src="
+                    'https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/' +
+                      portfolio.image
+                  "
+                  alt="ポートフォリオ画像"
+                  class="image ptf_image"
+                />
+                <h3 class="ptf_name">{{ portfolio.name }}</h3>
+              </div>
+            </slide>
+          </carousel>
+          <!-- ポートフォリオ詳細 -->
+          <Modal v-if="modal" @close="closeModal" :detail="detail"></Modal>
+        </div>
       </div>
+      <!-- タイムライン -->
       <div class="time_line">
         <h2 class="title">Tweets</h2>
         <h3 class="sab_title title">日々の積み上げツイート</h3>
-        <Timeline 
-        :id="twitter_id" 
-        sourceType="profile" 
-        error-message="This tweet could not be loaded" 
-        data-width="400" />
+        <Timeline
+          :id="twitter_id"
+          sourceType="profile"
+          error-message="This tweet could not be loaded"
+        />
       </div>
     </div>
   </div>
@@ -36,16 +62,47 @@
 
 <script>
 import { Timeline } from "vue-tweet-embed";
+import { Carousel, Slide } from "vue-carousel";
+import axios from "axios";
+import Modal from "../components/Modal.vue";
 export default {
   data() {
     return {
       skills: [],
-      works: [],
+      portfolios: [],
       twitter_id: "o4s_b",
+      autoplay: true,
+      loop: true,
+      modal: false,
     };
   },
   components: {
     Timeline,
+    Carousel,
+    Slide,
+    Modal,
+  },
+  methods: {
+    async getPtf() {
+      await axios
+        .get("https://yukinas-portfolio.herokuapp.com/api/portfolio")
+        .then((res) => {
+          this.portfolios = res.data.ptf;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    openModal(portfolio) {
+      this.modal = true;
+      this.detail = portfolio;
+    },
+    closeModal() {
+      this.modal = false;
+    },
+  },
+  created() {
+    this.getPtf();
   },
 };
 </script>
@@ -56,7 +113,6 @@ export default {
 ====================== */
 .main_title {
   font-size: 35px;
-  z-index: 1;
   position: absolute;
   top: 250px;
   left: 40px;
@@ -74,12 +130,11 @@ export default {
 ====================== */
 .time_line {
   width: 500px;
-  z-index: 3;
 }
 .contents {
   justify-content: space-around;
   padding: 0 90px;
-  margin-top: 50px;
+  margin-top: 10px;
 }
 .sab_title {
   font-size: 18px;
@@ -110,63 +165,40 @@ export default {
   background-color: #f9efdc;
   z-index: -10;
 }
-.aboutme_text{
+.aboutme_text {
   width: 50%;
   text-align: left;
   font-size: 18px;
   margin-left: 30px;
 }
-.flex_container{
+.flex_container {
   justify-content: center;
+}
+/* =====================
+      Portfolio
+====================== */
+.ptf_item {
+  width: 90%;
+  height: 300px;
+  border: 1px solid #c2c2c2;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+}
+.ptf_image {
+  width: 100%;
+  height: 250px;
+}
+.ptf_item:hover{
+  background: #fff;
 }
 /* =====================
       Skill
 ====================== */
-.skill-container {
-  width: 20%;
-  margin: 0 auto;
-}
-.skill-left {
-  width: 80%;
-  text-align: left;
-}
-.skill-right {
-  width: 10%;
-  text-align: left;
-  color: rgba(180, 180, 156, 0.8);
-}
-/* =====================
-      Works
-====================== */
-.works-container {
-  width: 80%;
-  margin: 0 auto;
-}
-.works-item {
-  width: 30%;
-  margin: 0 20px;
-  border: 1px solid rgba(180, 180, 156, 0.8);
-}
-.works-imagediv {
-  height: 250px;
-  position: relative;
-}
-.work-title {
-  margin: 15px auto;
-}
+
 /* =====================
       contact
 ====================== */
-.contact-container {
-  position: relative;
-  width: 100%;
-  height: 100px;
-  margin-bottom: 40px;
-}
-.contact-image {
-  width: 100px;
-  margin-top: 20px;
-}
+
 /* =====================
       レスポンシブ
 ====================== */

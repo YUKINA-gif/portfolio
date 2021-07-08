@@ -60,7 +60,7 @@ footer,header,hgroup,menu,nav,section {
   display:block;
 }
 
-nav ul {
+nav ul li{
   list-style:none;
 }
 
@@ -130,6 +130,7 @@ input, select {
 .title{
   font-size: 30px;
   color: #907B62;
+  margin: 40px auto;
 }
 img{
   width: 100%;
