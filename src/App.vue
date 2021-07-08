@@ -128,8 +128,8 @@ input, select {
   display: flex;
 }
 .title{
-  margin: 40px auto;
   font-size: 30px;
+  color: #907B62;
 }
 img{
   width: 100%;

@@ -2,22 +2,50 @@
   <div class="main">
     <h1 class="main_title">Yukina Nakanishi's</h1>
     <h1 class="main_title" id="main_title2">Portfolio</h1>
-    <img src="../assets/main.jpg" alt="メイン画像" class="image" />
-    <div class="flex">
-    <div></div>
-    <div class="time_line"></div>
+    <img
+      src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/main.jpg"
+      alt="メイン画像"
+      class="image"
+    />
+    <div class="flex contents">
+      <div id="aboutme">
+        <h2 class="title">About me</h2>
+        <div class="flex flex_container">
+          <div class="aboutme_image">
+            <div class="image_back"></div>
+          </div>
+          <div class="aboutme_text">
+              <p>中西 由季奈</p>
+              <p>1993年生まれ。</p>
+              <p>ECサイト運営の受注としてお客様対応する中でサイトについてのエラーや問い合わせを答えられないことにもどかしく感じ、プログラミングの勉強をはじめる。それがとても楽しく、自分にはモノづくりがあっていることに気付き、1月下旬から本格的に勉強を開始。</p>
+          </div>
+        </div>
+      </div>
+      <div class="time_line">
+        <h2 class="title">Tweets</h2>
+        <h3 class="sab_title title">日々の積み上げツイート</h3>
+        <Timeline 
+        :id="twitter_id" 
+        sourceType="profile" 
+        error-message="This tweet could not be loaded" 
+        data-width="400" />
+      </div>
     </div>
   </div>
-  
 </template>
 
 <script>
+import { Timeline } from "vue-tweet-embed";
 export default {
   data() {
     return {
       skills: [],
       works: [],
+      twitter_id: "o4s_b",
     };
+  },
+  components: {
+    Timeline,
   },
 };
 </script>
@@ -42,45 +70,54 @@ export default {
   height: 600px;
 }
 /* =====================
+      タイムライン
+====================== */
+.time_line {
+  width: 500px;
+  z-index: 3;
+}
+.contents {
+  justify-content: space-around;
+  padding: 0 90px;
+  margin-top: 50px;
+}
+.sab_title {
+  font-size: 18px;
+}
+/* =====================
       About me
 ====================== */
-.aboutme-container {
-  justify-content: center;
-}
-.aboutme {
-  width: 60%;
+#aboutme {
+  width: 100%;
   height: auto;
   margin: 0 auto;
 }
-.aboutme-imagediv {
+.aboutme_image {
   position: relative;
-  width: 60%;
-  margin-right: 60px;
-}
-.aboutme-image {
+  width: 300px;
+  height: 280px;
   border-radius: 10%;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+  background-image: url(https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/profile.jpg);
+  background-size: cover;
 }
-.aboutme-p {
-  font-size: 18px;
-  text-align: left;
-}
-.aboutme-p span {
-  font-weight: bold;
-}
-.shadow {
+.image_back {
+  width: 300px;
+  height: 280px;
   position: absolute;
   border-radius: 10%;
-  top: 60%;
-  left: 60%;
-  background-color: rgba(180, 180, 156, 0.3);
+  top: 20px;
+  left: 20px;
+  background-color: #f9efdc;
   z-index: -10;
+}
+.aboutme_text{
+  width: 50%;
+  text-align: left;
+  font-size: 18px;
+  margin-left: 30px;
+}
+.flex_container{
+  justify-content: center;
 }
 /* =====================
       Skill

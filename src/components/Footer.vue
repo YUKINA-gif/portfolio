@@ -11,9 +11,7 @@ footer {
   background-color: #6b5a46;
   text-align: right;
   color: #fff;
-  position: absolute;
   line-height: 60px;
-  bottom: 0;
 }
 small {
   color: #fff;
