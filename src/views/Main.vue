@@ -44,6 +44,46 @@
           </carousel>
           <!-- ポートフォリオ詳細 -->
           <Modal v-if="modal" @close="closeModal" :detail="detail"></Modal>
+          <!-- Skill -->
+          <div id="skills">
+            <h2 class="title">Skill</h2>
+            <Graph :styles="graph_css" class="graph" />
+          </div>
+          <!-- Contact -->
+          <div id="contact">
+            <h2 class="title">Contact</h2>
+            <form action="">
+              <ul>
+                <li>
+                  <label for="name">
+                    <font-awesome-icon
+                      icon="user"
+                      class="icon"
+                    />
+                  </label>
+                  <input type="text" id="name" placeholder="Name" />
+                </li>
+                <li>
+                  <label for="name">
+                    <font-awesome-icon
+                      icon="user"
+                      class="icon"
+                    />
+                  </label>
+                  <input type="text" id="name" placeholder="Email" />
+                </li>
+                <li>
+                  <label for="name">
+                    <font-awesome-icon
+                      icon="user"
+                      class="icon"
+                    />
+                  </label>
+                  <input type="text" id="name" placeholder="Message" />
+                </li>
+              </ul>
+            </form>
+          </div>
         </div>
       </div>
       <!-- タイムライン -->
@@ -65,15 +105,16 @@ import { Timeline } from "vue-tweet-embed";
 import { Carousel, Slide } from "vue-carousel";
 import axios from "axios";
 import Modal from "../components/Modal.vue";
+import Graph from "../components/Graph.vue";
 export default {
   data() {
     return {
-      skills: [],
       portfolios: [],
       twitter_id: "o4s_b",
       autoplay: true,
       loop: true,
       modal: false,
+      height: 500,
     };
   },
   components: {
@@ -81,6 +122,15 @@ export default {
     Carousel,
     Slide,
     Modal,
+    Graph,
+  },
+  computed: {
+    graph_css() {
+      return {
+        height: `${this.height}px`,
+        position: "relative",
+      };
+    },
   },
   methods: {
     async getPtf() {
@@ -188,13 +238,16 @@ export default {
   width: 100%;
   height: 250px;
 }
-.ptf_item:hover{
-  background: #fff;
+.ptf_item:hover {
+  background: rgba(160, 118, 64, 0.4);
 }
 /* =====================
       Skill
 ====================== */
-
+.graph {
+  width: 80%;
+  margin: 0 auto;
+}
 /* =====================
       contact
 ====================== */
