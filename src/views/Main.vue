@@ -45,7 +45,7 @@
           <!-- ポートフォリオ詳細 -->
           <Modal v-if="modal" @close="closeModal" :detail="detail"></Modal>
           <!-- Skill -->
-          <div id="skills">
+          <div id="skill">
             <h2 class="title">Skill</h2>
             <Graph :styles="graph_css" class="graph" />
           </div>
@@ -53,47 +53,40 @@
           <div id="contact">
             <h2 class="title">Contact</h2>
             <form action="">
-              <ul>
+              <ul class="contact_form">
                 <li>
                   <label for="name">
-                    <font-awesome-icon
-                      icon="user"
-                      class="icon"
-                    />
+                    <font-awesome-icon icon="user" class="icon" />
                   </label>
                   <input type="text" id="name" placeholder="Name" />
                 </li>
                 <li>
-                  <label for="name">
-                    <font-awesome-icon
-                      icon="user"
-                      class="icon"
-                    />
+                  <label for="email">
+                    <font-awesome-icon icon="user" class="icon" />
                   </label>
-                  <input type="text" id="name" placeholder="Email" />
+                  <input type="text" id="email" placeholder="Email" />
                 </li>
                 <li>
-                  <label for="name">
-                    <font-awesome-icon
-                      icon="user"
-                      class="icon"
-                    />
+                  <label for="text">
+                    <font-awesome-icon icon="user" class="icon" />
                   </label>
-                  <input type="text" id="name" placeholder="Message" />
+                  <textarea name="" id="text" cols="40" rows="8" placeholder="Message"></textarea>
                 </li>
               </ul>
             </form>
+            <button class="button">Send</button>
           </div>
         </div>
       </div>
       <!-- タイムライン -->
       <div class="time_line">
-        <h2 class="title">Tweets</h2>
-        <h3 class="sab_title title">日々の積み上げツイート</h3>
+        <h2 class="tweet_title">Tweets</h2>
+        <h3 class="sab_title">日々の積み上げツイート</h3>
         <Timeline
           :id="twitter_id"
           sourceType="profile"
           error-message="This tweet could not be loaded"
+          :options="{ tweetLimit: '9' }"
         />
       </div>
     </div>
@@ -186,8 +179,14 @@ export default {
   padding: 0 90px;
   margin-top: 10px;
 }
+.tweet_title {
+  margin-top: 60px;
+  font-size: 30px;
+  color: #907b62;
+}
 .sab_title {
   font-size: 18px;
+  color: #907b62;
 }
 /* =====================
       About me
@@ -199,15 +198,15 @@ export default {
 }
 .aboutme_image {
   position: relative;
-  width: 300px;
-  height: 280px;
+  width: 350px;
+  height: 330px;
   border-radius: 10%;
   background-image: url(https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/profile.jpg);
   background-size: cover;
 }
 .image_back {
-  width: 300px;
-  height: 280px;
+  width: 350px;
+  height: 330px;
   position: absolute;
   border-radius: 10%;
   top: 20px;
@@ -219,10 +218,7 @@ export default {
   width: 50%;
   text-align: left;
   font-size: 18px;
-  margin-left: 30px;
-}
-.flex_container {
-  justify-content: center;
+  margin-left: 60px;
 }
 /* =====================
       Portfolio
@@ -245,13 +241,41 @@ export default {
       Skill
 ====================== */
 .graph {
-  width: 80%;
-  margin: 0 auto;
+  width: 90%;
 }
 /* =====================
-      contact
+      Contact
 ====================== */
-
+#contact {
+  width: 100%;
+}
+.contact_form li{
+  margin-bottom: 30px;
+}
+input,textarea {
+  width: 70%;
+  padding: 10px;
+  border: none;
+  outline: none;
+  border: 1px dashed #907b62;
+}
+textarea{
+  resize: none;
+  vertical-align:top;
+}
+.icon {
+  color: #907b62;
+  width: 20px;
+  height: 20px;
+}
+.button{
+  color: #fff;
+  background-color: #907b62;
+  border: 1px solid #907b62;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+}
 /* =====================
       レスポンシブ
 ====================== */

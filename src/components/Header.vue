@@ -16,7 +16,7 @@
             <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#skill">Skill</a>
           </li>
-           <li>
+          <li>
             <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#contact">Contact</a>
           </li>
@@ -46,7 +46,7 @@
             >
           </li>
           <li>
-            <a href="#skills">
+            <a href="#skill">
               <font-awesome-icon
                 icon="user-plus"
                 class="hamburger_icon"
@@ -54,7 +54,7 @@
             >
           </li>
           <li>
-            <a href="#skills">
+            <a href="#contact">
               <font-awesome-icon
                 icon="user-plus"
                 class="hamburger_icon"
