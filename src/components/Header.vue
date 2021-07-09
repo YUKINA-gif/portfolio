@@ -5,16 +5,20 @@
       <nav class="nav">
         <ul class="flex">
           <li>
-            <font-awesome-icon icon="" class="icon" />
+            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#aboutme">About me</a>
           </li>
           <li>
-            <font-awesome-icon icon="" class="icon" />
+            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#portfolio">Portfolio</a>
           </li>
           <li>
-            <font-awesome-icon icon="" class="icon" />
-            <a href="#skills">Skills</a>
+            <!-- <font-awesome-icon icon="" class="icon" /> -->
+            <a href="#skill">Skill</a>
+          </li>
+          <li>
+            <!-- <font-awesome-icon icon="" class="icon" /> -->
+            <a href="#contact">Contact</a>
           </li>
         </ul>
       </nav>
@@ -42,11 +46,19 @@
             >
           </li>
           <li>
-            <a href="#skills">
+            <a href="#skill">
               <font-awesome-icon
                 icon="user-plus"
                 class="hamburger_icon"
-              />Skills</a
+              />Skill</a
+            >
+          </li>
+          <li>
+            <a href="#contact">
+              <font-awesome-icon
+                icon="user-plus"
+                class="hamburger_icon"
+              />Contact</a
             >
           </li>
         </ul>
@@ -85,7 +97,7 @@ export default {
   position: fixed;
   top: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 1;
   background-color: #899a7f;
 }
 .menu a {
