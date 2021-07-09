@@ -1,4 +1,5 @@
 <script>
+// グラフ
 import { HorizontalBar } from "vue-chartjs";
 import axios from "axios";
 export default {
@@ -30,6 +31,7 @@ export default {
     axios
       .get("https://yukinas-portfolio.herokuapp.com/api/skill")
       .then((res) => {
+        // グラフカラー
         const color = [
           "rgba(255, 99, 132, 0.2)",
           "rgba(255, 159, 64, 0.2)",
@@ -41,6 +43,7 @@ export default {
           "rgba(109, 24, 24, 0.2)",
           "rgba(201, 203, 207, 0.2)",
         ];
+        // グラフ枠カラー
         const backgroundColor = [
           "rgb(255, 99, 132)",
           "rgb(255, 159, 64)",
@@ -52,6 +55,7 @@ export default {
           "rgb(109, 24, 24,0.6)",
           "rgb(201, 203, 207)",
         ];
+        // グラフデータ取得
         this.skillData = {
           labels: res.data.skill.map((x) => x.name),
           datasets: [
