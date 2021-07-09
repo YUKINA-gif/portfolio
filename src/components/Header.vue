@@ -5,19 +5,15 @@
       <nav class="nav">
         <ul class="flex">
           <li>
-            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#aboutme">About me</a>
           </li>
           <li>
-            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#portfolio">Portfolio</a>
           </li>
           <li>
-            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#skill">Skill</a>
           </li>
           <li>
-            <!-- <font-awesome-icon icon="" class="icon" /> -->
             <a href="#contact">Contact</a>
           </li>
         </ul>
@@ -32,34 +28,16 @@
       <nav :class="{ open: menu }" class="menu_content">
         <ul class="hamburger_memu">
           <li>
-            <a href="#aboutme">
-              <font-awesome-icon icon="home" class="hamburger_icon" />About
-              me</a
-            >
+            <a href="#aboutme"> About me</a>
           </li>
           <li>
-            <a href="#portfolio">
-              <font-awesome-icon
-                icon="door-open"
-                class="hamburger_icon"
-              />Portfolio</a
-            >
+            <a href="#portfolio"> Portfolio</a>
           </li>
           <li>
-            <a href="#skill">
-              <font-awesome-icon
-                icon="user-plus"
-                class="hamburger_icon"
-              />Skill</a
-            >
+            <a href="#skill"> Skill</a>
           </li>
           <li>
-            <a href="#contact">
-              <font-awesome-icon
-                icon="user-plus"
-                class="hamburger_icon"
-              />Contact</a
-            >
+            <a href="#contact"> Contact</a>
           </li>
         </ul>
       </nav>
@@ -78,9 +56,6 @@ export default {
   methods: {
     hamburger() {
       this.menu = !this.menu;
-    },
-    logout() {
-      this.$store.dispatch("logout");
     },
   },
 };
@@ -189,12 +164,11 @@ h1 {
     top: 60px;
     right: calc(-100% - 80px);
     background: rgb(255, 255, 255, 0.7);
-    color: #333333;
     box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
     z-index: 999;
+    font-weight: bold;
   }
   .menu_content li {
-    color: #333333;
     margin: 15px;
     padding: 5px;
     border-bottom: 0.5px solid #899a7f;
@@ -210,7 +184,7 @@ h1 {
   .menu_content li a {
     display: inline-block;
     text-decoration: none;
-    color: #333333;
+    color: #6b5a46;
     display: block;
   }
   .hamburger_icon {

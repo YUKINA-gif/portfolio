@@ -1,13 +1,15 @@
 <template>
   <div class="main">
     <!-- メインイメージ -->
-    <h1 class="main_title">Yukina Nakanishi's</h1>
-    <h1 class="main_title" id="main_title2">Portfolio</h1>
+    <div class="main_title">
+      <h1>Yukina Nakanishi's<br />Portfolio</h1>
+    </div>
     <img
       src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/main.jpg"
       alt="メイン画像"
       class="image"
     />
+
     <!-- About me -->
     <div class="flex contents">
       <div id="aboutme">
@@ -42,7 +44,7 @@
               </div>
             </slide>
           </carousel>
-          <!-- ポートフォリオ詳細 -->
+          <!-- モーダルウインドウ表示 -->
           <Modal v-if="modal" @close="closeModal" :detail="detail"></Modal>
           <!-- Skill -->
           <div id="skill">
@@ -52,29 +54,74 @@
           <!-- Contact -->
           <div id="contact">
             <h2 class="title">Contact</h2>
-            <form action="">
-              <ul class="contact_form">
-                <li>
-                  <label for="name">
-                    <font-awesome-icon icon="user" class="icon" />
-                  </label>
-                  <input type="text" id="name" placeholder="Name" />
-                </li>
-                <li>
-                  <label for="email">
-                    <font-awesome-icon icon="user" class="icon" />
-                  </label>
-                  <input type="text" id="email" placeholder="Email" />
-                </li>
-                <li>
-                  <label for="text">
-                    <font-awesome-icon icon="user" class="icon" />
-                  </label>
-                  <textarea name="" id="text" cols="40" rows="8" placeholder="Message"></textarea>
-                </li>
-              </ul>
-            </form>
-            <button class="button">Send</button>
+            <ValidationObserver ref="observer">
+              <form action="">
+                <ul class="contact_form">
+                  <li>
+                    <ValidationProvider
+                      rules="required"
+                      ref="myname"
+                      v-slot="{ errors }"
+                    >
+                      <label for="name">
+                        <font-awesome-icon icon="user" class="icon" />
+                      </label>
+                      <input
+                        type="text"
+                        id="name"
+                        placeholder="Name"
+                        name="Name"
+                        v-model="name"
+                      /><br />
+                      <span class="error">{{ errors[0] }}</span>
+                    </ValidationProvider>
+                  </li>
+                  <li>
+                    <ValidationProvider
+                      rules="required|email"
+                      ref="myname"
+                      v-slot="{ errors }"
+                    >
+                      <label for="email">
+                        <font-awesome-icon icon="envelope" class="icon" />
+                      </label>
+                      <input
+                        type="text"
+                        id="email"
+                        name="Email"
+                        placeholder="Email"
+                        v-model="email"
+                      /><br />
+                      <span class="error">{{ errors[0] }}</span>
+                    </ValidationProvider>
+                  </li>
+                  <li>
+                    <ValidationProvider
+                      rules="required"
+                      ref="myname"
+                      v-slot="{ errors }"
+                    >
+                      <label for="text">
+                        <font-awesome-icon icon="pen" class="icon" />
+                      </label>
+                      <textarea
+                        name="Text"
+                        id="text"
+                        cols="40"
+                        rows="8"
+                        placeholder="Message"
+                        v-model="text"
+                      ></textarea
+                      ><br />
+                      <span class="error">{{ errors[0] }}</span>
+                    </ValidationProvider>
+                  </li>
+                </ul>
+                <button class="button" type="button" @click="contact">
+                  Send
+                </button>
+              </form>
+            </ValidationObserver>
           </div>
         </div>
       </div>
@@ -82,6 +129,7 @@
       <div class="time_line">
         <h2 class="tweet_title">Tweets</h2>
         <h3 class="sab_title">日々の積み上げツイート</h3>
+        <h1 class="sab_title">(1/20~毎日投稿中)</h1>
         <Timeline
           :id="twitter_id"
           sourceType="profile"
@@ -94,6 +142,18 @@
 </template>
 
 <script>
+import {
+  ValidationObserver,
+  ValidationProvider,
+  extend,
+  localize,
+} from "vee-validate";
+import ja from "vee-validate/dist/locale/ja";
+import * as rules from "vee-validate/dist/rules";
+for (let rule in rules) {
+  extend(rule, rules[rule]);
+}
+localize("ja", ja);
 import { Timeline } from "vue-tweet-embed";
 import { Carousel, Slide } from "vue-carousel";
 import axios from "axios";
@@ -108,6 +168,9 @@ export default {
       loop: true,
       modal: false,
       height: 500,
+      name: "",
+      email: "",
+      text: "",
     };
   },
   components: {
@@ -116,6 +179,8 @@ export default {
     Slide,
     Modal,
     Graph,
+    ValidationObserver,
+    ValidationProvider,
   },
   computed: {
     graph_css() {
@@ -143,6 +208,37 @@ export default {
     closeModal() {
       this.modal = false;
     },
+    contact() {
+      // バリデーション
+      this.$refs.observer.validate().then((res) => {
+        // バリデーションが有効ならスルー
+        if (res == false) {
+          console.log(res);
+          // そうでなければ送信
+        } else {
+          axios
+            .post("https://yukinas-portfolio.herokuapp.com/api/contact", {
+              name: this.name,
+              email: this.email,
+              text: this.text,
+            })
+            .then((res) => {
+              alert("メッセージの送信が完了しました。");
+              console.log(res);
+              this.$router.go({
+                path: this.$router.currentRoute.path,
+                force: true,
+              });
+            })
+            .catch((err) => {
+              alert(
+                "メッセージの送信ができませんでした。お手数ですが、再度お試しください。"
+              );
+              console.log(err);
+            });
+        }
+      });
+    },
   },
   created() {
     this.getPtf();
@@ -155,15 +251,16 @@ export default {
       メイン画像
 ====================== */
 .main_title {
+  width: 100%;
   font-size: 35px;
   position: absolute;
   top: 250px;
-  left: 40px;
   color: #fff;
+  text-align: left;
+  background-color: rgb(137, 154, 127, 0.2);
 }
-#main_title2 {
-  position: absolute;
-  top: 300px;
+.main_title h1 {
+  padding-left: 40px;
 }
 .image {
   height: 600px;
@@ -176,7 +273,7 @@ export default {
 }
 .contents {
   justify-content: space-around;
-  padding: 0 90px;
+  padding: 0 80px;
   margin-top: 10px;
 }
 .tweet_title {
@@ -205,7 +302,7 @@ export default {
   background-size: cover;
 }
 .image_back {
-  width: 350px;
+  width: 100%;
   height: 330px;
   position: absolute;
   border-radius: 10%;
@@ -225,10 +322,10 @@ export default {
 ====================== */
 .ptf_item {
   width: 90%;
-  height: 300px;
   border: 1px solid #c2c2c2;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.4);
   cursor: pointer;
+  padding-bottom: 10px;
 }
 .ptf_image {
   width: 100%;
@@ -247,28 +344,32 @@ export default {
       Contact
 ====================== */
 #contact {
-  width: 100%;
+  width: 80%;
+  margin: 0 auto;
 }
-.contact_form li{
+.contact_form li {
   margin-bottom: 30px;
+  text-align: left;
 }
-input,textarea {
-  width: 70%;
+input,
+textarea {
+  width: 85%;
   padding: 10px;
   border: none;
   outline: none;
   border: 1px dashed #907b62;
 }
-textarea{
+textarea {
   resize: none;
-  vertical-align:top;
+  vertical-align: top;
 }
 .icon {
   color: #907b62;
-  width: 20px;
+  width: 25px;
   height: 20px;
+  margin-right: 5px;
 }
-.button{
+.button {
   color: #fff;
   background-color: #907b62;
   border: 1px solid #907b62;
@@ -276,45 +377,45 @@ textarea{
   padding: 10px 15px;
   margin-bottom: 10px;
 }
+.error {
+  color: red;
+  margin-left: 30px;
+}
 /* =====================
       レスポンシブ
 ====================== */
 @media screen and (max-width: 768px) {
-  .aboutme {
+  .main {
     width: 100%;
   }
-  .aboutme-imagediv {
-    height: 300px;
-    width: 90%;
-    margin: 0 auto;
-  }
-  .aboutme-container {
-    flex-wrap: wrap;
-    width: 90%;
-  }
-  .aboutme-p {
-    margin: 10% 0 0 5%;
-  }
-  .skill-container {
-    width: 55%;
-  }
-  .works-container {
-    width: 90%;
+  .flex {
     flex-wrap: wrap;
   }
-  .works-item {
-    width: 90%;
-    margin-bottom: 20px;
+  .aboutme_image,
+  .aboutme_text,
+  #contact {
+    width: 100%;
   }
-  .contact-container {
+  .aboutme_text {
+    margin: 30px 0;
+  }
+  .contents {
     width: 90%;
+    padding: 0;
     margin: 0 auto;
-    height: 150px;
   }
-  .contact-image {
-    margin-top: 30px;
-    height: 100px;
-    display: inline-block;
+  .image_back {
+    left: 0;
+  }
+  .ptf_image {
+    height: 130px;
+  }
+  .graph {
+    width: 100%;
+  }
+  input,
+  textarea {
+    width: 80%;
   }
 }
 </style>

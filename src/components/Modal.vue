@@ -1,5 +1,6 @@
 <template>
   <transition name="modal">
+    <!-- モーダルウインドウ -->
     <div class="overlay" @click.self="$emit('close')">
       <div class="modal_window">
         <div class="image_div">
@@ -40,6 +41,8 @@
             <td>{{ detail.solutions }}</td>
           </tr>
         </table>
+
+        <button @click.self="$emit('close')" class="button">Back</button>
       </div>
     </div>
   </transition>
@@ -73,9 +76,10 @@ export default {
 .modal_window {
   text-align: center;
   z-index: 5;
-  width: 40%;
+  width: 50%;
   padding: 20px;
   background: #fff;
+  font-size: 15px;
 }
 .title {
   margin: 0 auto;
@@ -83,7 +87,7 @@ export default {
   font-weight: bold;
 }
 .image_div {
-  height: 25%;
+  height: 320px;
 }
 li {
   list-style: none;
@@ -103,5 +107,25 @@ th {
 }
 td {
   width: 80%;
+}
+.button {
+  color: #fff;
+  background-color: #907b62;
+  border: 1px solid #907b62;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin-top: 10px;
+}
+/* ====================
+      レスポンシブ
+==================== */
+@media screen and (max-width: 768px) {
+  .modal_window {
+    width: 80%;
+    font-size: 13px;
+  }
+  .image_div {
+    height: 200px;
+  }
 }
 </style>
