@@ -17,13 +17,13 @@
         <p>{{ detail.detail }}</p>
         <table>
           <tr>
-            <th>フロント:</th>
+            <th>フロントエンド:</th>
             <td>
               <a :href="detail.github_front">{{ detail.github_front }}</a>
             </td>
           </tr>
           <tr>
-            <th>API:</th>
+            <th>バックエンド:</th>
             <td>
               <a :href="detail.github_api">{{ detail.github_api }}</a>
             </td>
