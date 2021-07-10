@@ -51,7 +51,7 @@ UIはお気に入りのメイン画像に合わせて作りました
 
 ## Portfolio<a id=portfolio></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf.png">。
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf.png">
 
 制作物の一覧です
 
