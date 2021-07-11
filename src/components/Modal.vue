@@ -33,6 +33,10 @@
             <td>{{ detail.created }}</td>
           </tr>
           <tr>
+            <th>URL:</th>
+            <td><a href="">{{ detail.url }}</a></td>
+          </tr>
+          <tr>
             <th>苦労した点:</th>
             <td>{{ detail.difficulties }}</td>
           </tr>
