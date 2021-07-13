@@ -113,19 +113,13 @@ export default {
               email: this.email,
               text: this.text,
             })
-            .then((res) => {
-              alert("メッセージの送信が完了しました。");
-              console.log(res);
-              this.$router.go({
-                path: this.$router.currentRoute.path,
-                force: true,
-              });
+            .then(() => {
+              this.$router.replace("/thanks");
             })
-            .catch((err) => {
+            .catch(() => {
               alert(
                 "メッセージの送信ができませんでした。お手数ですが、再度お試しください。"
               );
-              console.log(err);
             });
         }
       });
@@ -141,6 +135,7 @@ export default {
 form {
   width: 70%;
   margin: 0 auto;
+  text-align: left;
 }
 input,
 textarea {

@@ -1,7 +1,7 @@
 <template>
   <div :class="header" class="header">
     <!-- ヘッダー -->
-    <div class="menu">
+    <div class="menu" v-if="contents()">
       <nav class="nav">
         <ul class="flex">
           <li>
@@ -51,11 +51,19 @@ export default {
     return {
       menu: false,
       header: "default",
+      nav: true,
     };
   },
   methods: {
     hamburger() {
       this.menu = !this.menu;
+    },
+    contents() {
+      if (this.$route.name === "Thanks") {
+        return false;
+      } else {
+        return true;
+      }
     },
   },
 };

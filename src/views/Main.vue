@@ -10,9 +10,9 @@
       class="image"
     />
     <!-- About me -->
-    <AboutMe />
+    <AboutMe id="aboutme" />
     <!-- Portfolio -->
-    <div class="carousel">
+    <div class="carousel" id="portfolio">
       <h2 class="title ptf_title" id="portfolio">Portfolio</h2>
       <carousel
         :per-page="3"
@@ -43,7 +43,7 @@
       <Graph :styles="graph_css" class="graph" />
     </div>
     <!-- Contact -->
-    <Contact />
+    <Contact id="contact" />
   </div>
 </template>
 
