@@ -10,11 +10,11 @@
 
 ## ページ一覧
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/top.png">
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/aboutme.png">
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf.png">
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/skill.png">
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/contact.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/top1.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/aboutme1.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf1.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/skill1.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/contact1.png">
 
 ## 各ページ機能・詳細
 
@@ -32,13 +32,13 @@
 
 ## トップページ<a id=top></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/top.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/top1.png">
 
 UI はお気に入りのメイン画像に合わせて作りました
 
 ## About me<a id=aboutme></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/aboutme.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/aboutme1.png">
 
 簡単な自己紹介欄です
 
@@ -52,7 +52,7 @@ UI はお気に入りのメイン画像に合わせて作りました
 
 ## Portfolio<a id=portfolio></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf1.png">
 
 制作物の一覧です
 
@@ -73,7 +73,7 @@ UI はお気に入りのメイン画像に合わせて作りました
 
 ## Skill<a id=skill></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/skill.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/skill1.png">
 
 自身のスキル一覧です
 
@@ -83,7 +83,7 @@ UI はお気に入りのメイン画像に合わせて作りました
 
 ## Contact<a id=contact></a>
 
-<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/contact.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/contact1.png">
 
 お問い合わせ欄です
 
