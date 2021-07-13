@@ -135,7 +135,6 @@ export default {
 form {
   width: 70%;
   margin: 0 auto;
-  text-align: left;
 }
 input,
 textarea {
@@ -161,7 +160,8 @@ textarea {
   border: 1px solid #907b62;
   cursor: pointer;
   padding: 10px 15px;
-  margin-bottom: 20px;
+  margin: 0 50% 20px 50%;
+  transform: translate(-50%);
 }
 .error {
   color: red;
