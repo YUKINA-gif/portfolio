@@ -1,6 +1,6 @@
 <template>
   <div class="contact">
-    <h2 class="title">Contact</h2>
+    <h5 class="title">Contact</h5>
     <ValidationObserver ref="observer">
       <form action="">
         <ul class="contact_form">

@@ -13,7 +13,7 @@
     <AboutMe id="aboutme" />
     <!-- Portfolio -->
     <div class="carousel" id="portfolio">
-      <h2 class="title ptf_title" id="portfolio">Portfolio</h2>
+      <h3 class="title ptf_title" id="portfolio">Portfolio</h3>
       <carousel
         :per-page="3"
         :autoplay="autoplay"
@@ -39,7 +39,7 @@
     <Modal v-if="modal" @close="closeModal" :detail="detail"></Modal>
     <!-- Skill -->
     <div id="skill">
-      <h2 class="title">Skill</h2>
+      <h4 class="title">Skill</h4>
       <Graph :styles="graph_css" class="graph" />
     </div>
     <!-- Contact -->
@@ -82,8 +82,8 @@ export default {
     },
   },
   methods: {
-    async getPtf() {
-      await axios
+    getPtf() {
+      axios
         .get("https://yukinas-portfolio.herokuapp.com/api/portfolio")
         .then((res) => {
           this.portfolios = res.data.ptf;
