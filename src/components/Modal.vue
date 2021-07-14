@@ -19,7 +19,7 @@
           <tr>
             <th>フロントエンド:</th>
             <td>
-              <a :href="detail.github_front">{{ detail.github_front }}</a>
+              <a :href="detail.github_front" target="_blank">{{ detail.github_front }}</a>
             </td>
           </tr>
           <tr>
@@ -34,7 +34,7 @@
           </tr>
           <tr>
             <th>URL:</th>
-            <td><a href="">{{ detail.url }}</a></td>
+            <td><a :href="detail.url">{{ detail.url }}</a></td>
           </tr>
           <tr>
             <th>苦労した点:</th>
