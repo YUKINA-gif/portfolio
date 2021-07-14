@@ -15,6 +15,7 @@
 <img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/ptf1.png">
 <img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/skill1.png">
 <img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/contact1.png">
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/thanks.png">
 
 ## 各ページ機能・詳細
 
@@ -90,3 +91,7 @@ UI はお気に入りのメイン画像に合わせて作りました
 いただいたお問い合わせは自身のメールアドレスへ届くように設定しております
 
 フロント、バックともにバリデーションも設定済みです
+
+お問い合わせ送信後はサンクスページへ遷移します
+
+<img src="https://yn-portfolio.s3.ap-northeast-3.amazonaws.com/thanks.png">
