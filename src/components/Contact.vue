@@ -135,10 +135,11 @@ export default {
 form {
   width: 70%;
   margin: 0 auto;
+  text-align: left;
 }
 input,
 textarea {
-  width: 85%;
+  width: 92%;
   padding: 10px;
   border: none;
   outline: none;
@@ -174,9 +175,16 @@ textarea {
   .contact_form li {
     width: 98%;
   }
+  input,
+  textarea {
+    width: 85%;
+  }
   form {
     margin: 0 auto;
     width: 100%;
+  }
+  .button {
+    margin: 0 0 20px 50%;
   }
 }
 </style>

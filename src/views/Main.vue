@@ -162,11 +162,7 @@ export default {
 ==================== */
 @media screen and (max-width: 768px) {
   .graph {
-    width: 95%;
-  }
-  input,
-  textarea {
-    width: 80%;
+    width: 90%;
   }
   .carousel {
     width: 100%;
