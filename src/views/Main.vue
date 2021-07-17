@@ -132,8 +132,12 @@ export default {
 /* ===================
         Skill
 ==================== */
-.graph {
-  width: 65%;
+#skill {
+  width: 90%;
+  margin: 0 auto;
+}
+.graph{
+  width: 60%;
   margin: 0 auto;
 }
 /* =====================
@@ -162,7 +166,11 @@ export default {
 ==================== */
 @media screen and (max-width: 768px) {
   .graph {
-    width: 90%;
+    width: 95%;
+  }
+  input,
+  textarea {
+    width: 80%;
   }
   .carousel {
     width: 100%;
