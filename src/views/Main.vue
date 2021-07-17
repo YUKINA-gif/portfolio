@@ -137,7 +137,7 @@ export default {
   margin: 0 auto;
 }
 .graph{
-  width: 60%;
+  width: 70%;
   margin: 0 auto;
 }
 /* =====================

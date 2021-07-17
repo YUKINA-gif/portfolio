@@ -133,7 +133,7 @@ export default {
       Contact
 ====================== */
 form {
-  width: 100%;
+  width: 70%;
   margin: 0 auto;
   text-align: left;
 }
