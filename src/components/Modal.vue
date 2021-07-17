@@ -126,7 +126,7 @@ td {
 @media screen and (max-width: 768px) {
   .modal_window {
     width: 80%;
-    font-size: 13px;
+    font-size: 11px;
   }
   .image_div {
     height: 200px;

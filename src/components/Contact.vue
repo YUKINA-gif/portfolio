@@ -133,12 +133,13 @@ export default {
       Contact
 ====================== */
 form {
-  width: 70%;
+  width: 100%;
   margin: 0 auto;
+  text-align: left;
 }
 input,
 textarea {
-  width: 85%;
+  width: 90%;
   padding: 10px;
   border: none;
   outline: none;
@@ -172,11 +173,18 @@ textarea {
 ==================== */
 @media screen and (max-width: 768px) {
   .contact_form li {
-    width: 98%;
+    width: 100%;
+  }
+  input,
+  textarea {
+    width: 94%;
   }
   form {
     margin: 0 auto;
     width: 100%;
+  }
+  .button {
+    margin: 0 0 20px 50%;
   }
 }
 </style>

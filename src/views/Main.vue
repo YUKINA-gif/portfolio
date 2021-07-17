@@ -132,8 +132,12 @@ export default {
 /* ===================
         Skill
 ==================== */
-.graph {
-  width: 65%;
+#skill {
+  width: 90%;
+  margin: 0 auto;
+}
+.graph{
+  width: 60%;
   margin: 0 auto;
 }
 /* =====================
