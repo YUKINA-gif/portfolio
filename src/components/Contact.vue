@@ -149,6 +149,9 @@ textarea {
   resize: none;
   vertical-align: top;
 }
+.contact_form li {
+  margin-top: 30px;
+}
 .icon {
   color: #907b62;
   width: 25px;
@@ -161,7 +164,7 @@ textarea {
   border: 1px solid #907b62;
   cursor: pointer;
   padding: 10px 15px;
-  margin: 0 50% 20px 50%;
+  margin: 30px 50% 20px 50%;
   transform: translate(-50%);
 }
 .error {
@@ -177,14 +180,22 @@ textarea {
   }
   input,
   textarea {
-    width: 94%;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  .icon {
+    margin-top: 20px;
   }
   form {
     margin: 0 auto;
     width: 100%;
   }
   .button {
-    margin: 0 0 20px 50%;
+    margin: 30px 0 20px 50%;
+  }
+  .error {
+    color: red;
+    margin-left: 0;
   }
 }
 </style>
