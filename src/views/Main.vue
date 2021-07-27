@@ -165,6 +165,9 @@ export default {
       レスポンシブ
 ==================== */
 @media screen and (max-width: 768px) {
+  #skill {
+    width: 100%;
+  }
   .graph {
     width: 95%;
   }

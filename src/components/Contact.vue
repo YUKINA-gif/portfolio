@@ -133,8 +133,9 @@ export default {
       Contact
 ====================== */
 form {
-  width: 70%;
+  width: 60%;
   margin: 0 auto;
+  padding-left: 40px;
   text-align: left;
 }
 input,
@@ -180,7 +181,6 @@ textarea {
   }
   input,
   textarea {
-    width: 100%;
     box-sizing: border-box;
   }
   .icon {
@@ -188,14 +188,11 @@ textarea {
   }
   form {
     margin: 0 auto;
+    padding-left: 0;
     width: 100%;
   }
   .button {
     margin: 30px 0 20px 50%;
-  }
-  .error {
-    color: red;
-    margin-left: 0;
   }
 }
 </style>
